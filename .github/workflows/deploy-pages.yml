@@ -35,6 +35,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build static site
         run: pnpm run build
+      - name: Normalize Pages asset paths
+        run: mv "dist/client/${{ github.event.repository.name }}/_next" dist/client/_next
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
